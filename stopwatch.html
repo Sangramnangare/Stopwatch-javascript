@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stopwatch</title>
+    <style>
+        body{
+            margin: 50px;
+            background-color: coral;
+            text-align: center;
+            justify-content: center;
+        }
+        .container{
+            font-size: 70px;
+            font-weight: bolder;
+            padding: 10px 20px;
+
+        }
+        button{
+            background-color: gold;
+           padding: 9px;
+           border: none;
+           border-radius: 20px;
+           width: 90px;
+         
+        }
+        .stop{
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="stopwatch">00:00:00</div>
+    </div>
+    <div>
+       <button onclick="starttimer()">start</button>
+        <button onclick="stoptimer()" class="btn-stop">stop</button>
+        <button onclick="resettimer()">reset</button>
+    </div>
+    <script>
+        let stopwatch = document.getElementById("stopwatch");
+        let sec = 0;
+        let min = 0;
+        let hr = 0;
+         function starttimer(){
+            a = setInterval(() => {
+                 sec++;
+                 console.log(sec);
+                
+           
+            if(sec<59)
+            {
+                sec++;
+                
+            }
+            else if(min>=59)
+            {
+                hr++;
+                min=0;
+            }
+            else{
+                sec = 0;
+                min++;
+            }
+            console.log(hr + " " + min + " " + sec);
+            stopwatch.innerHTML = hr + ":" + min + ":" + sec;
+
+            let seconds = sec.toString().padStart(2,"0");
+            let minutes = min.toString().padStart(2,"0");
+            let hours = hr.toString().padStart(2,"0");
+            console.log(seconds + ":" + minutes + ":" + hours);
+            stopwatch.innerHTML = hours +":" + minutes + ":" + seconds;
+        }, 10);
+
+         }
+         function stoptimer(){
+            clearInterval(a);
+         }
+
+         function resettimer(){
+            sec = 0;
+            min = 0;
+            hr = 0;
+            console.log(sec + " " + min + " " + hr);
+            stopwatch.innerHTML = sec + " " + min + " " + hr;
+             
+
+            a = sec.toString().padStart(2,"0");
+            b = min. toString().padStart(2,"0");
+            c = hr.toString().padStart(2,"0");
+            console.log(a + ":" + b + ":" + c);
+            stopwatch.innerHTML = c + ":" + b + ":" + a;
+
+            clearInterval(a);
+         }
+    </script>
+</body>
+</html>
